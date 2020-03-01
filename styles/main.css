@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    min-width: 1024px;
+}
+
+.sidebar {
+    width: 30%;
+    border: 1px red solid;
+}
+
+.content {
+    width: 70%;
+    border: 1px green solid;
+}
