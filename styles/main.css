@@ -20,6 +20,10 @@ h1 {
     font-size: 30px;
 }
 
+section {
+    width: 100%;
+}
+
 img {
     max-width: 100%;
 }
@@ -33,6 +37,12 @@ img {
 .svg-icon polygon,
 .svg-icon rect {
     fill: #000000;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    max-width: 840px;
 }
 
 .text-center {
@@ -50,9 +60,13 @@ img {
 }
 
 header {
-    margin-top: 10px;
     display: flex;
     width: 100%;
+    margin-bottom: 10px;
+}
+
+header .hamburger {
+    display: none;
 }
 
 ul.menu {
@@ -77,6 +91,7 @@ ul.menu li a {
     padding: 10px 15px 10px 15px;
     font-size: 22px;
     font-weight: 400;
+    border-radius: 25px;
 }
 
 footer ul.menu li a {
@@ -122,16 +137,21 @@ footer ul.menu li a {
 }
 
 .masonry {
-    display: flex;
-    flex-flow: column wrap;
-    max-height: 800px;
-    width: 100%;
-    font-size: 0;
+    transition: all .5s ease-in-out;
+    column-gap: 10px;
+    column-fill: initial;
 }
 
 .masonry img {
-    padding: 5px;
-    width: 33.3%;
+    margin-bottom: 10px;
+    display: inline-block;
+    vertical-align: top;
+    transition: all .5s ease-in-out;
+    backface-visibility: hidden;
+}
+
+.masonry img:hover {
+    opacity: .75;
 }
 
 button {
@@ -143,8 +163,68 @@ button {
 }
 
 button:hover {
-    border: 1px solid var(--main-theme-color);
+    border-color: var(--main-theme-color);
     color: var(--main-theme-color);
+}
+
+button:hover .svg-icon path,
+button:hover .svg-icon polygon,
+button:hover .svg-icon rect {
+    fill: var(--main-theme-color);
+}
+
+button.green {
+    border-color: green;
+    color: green;
+}
+
+button.green .svg-icon path,
+button.green .svg-icon polygon,
+button.green .svg-icon rect {
+    fill: green;
+}
+
+button.green:hover {
+    background-color: green;
+    color: white;
+}
+
+button.red {
+    border-color: #cc2a3f;
+    color: #cc2a3f;
+}
+
+button.red .svg-icon path,
+button.red .svg-icon polygon,
+button.red .svg-icon rect {
+    fill: #cc2a3f;
+}
+
+button.red:hover {
+    background-color: #cc2a3f;
+    color: white;
+}
+
+button.red:hover .svg-icon path,
+button.red:hover .svg-icon polygon,
+button.red:hover .svg-icon rect {
+    fill: white;
+}
+
+button.orange {
+    border-color: orange;
+    color: orange;
+}
+
+button.orange .svg-icon path,
+button.orange .svg-icon polygon,
+button.orange .svg-icon rect {
+    fill: orange;
+}
+
+button.orange:hover {
+    background-color: orange;
+    color: white;
 }
 
 footer, header {
@@ -158,15 +238,10 @@ footer {
     justify-content: space-between;
 }
 
-@media (min-width: 768px) {
-    ul.menu li a {
-        border-radius: 25px;
-    }
-}
-
-@media (max-width: 767.98px) {
+@media (max-width: 768px) {
     .content {
         flex-direction: column;
+        width: 90%;
     }
 
     .content button {
@@ -174,14 +249,6 @@ footer {
     }
 
     .box {
-        width: 100%;
-    }
-
-    .masonry {
-        max-height: none;
-    }
-
-    .masonry img {
         width: 100%;
     }
 
@@ -195,12 +262,45 @@ footer {
         justify-content: center;
     }
 
+    header {
+        min-height: 30px;
+    }
+
+    header .hamburger {
+        display: block;
+        position: absolute;
+        right: 5%;
+        cursor: pointer;
+    }
+
+    header .hamburger svg path {
+        fill: #c3604f;
+    }
+
+    header .hamburger svg {
+        display: none;
+    }
+
+    header .hamburger svg.open.active, header .hamburger svg.close.active {
+        display: block;
+    }
+
     ul.menu {
         width: 100%;
+        display: none;
+        margin-top:40px;
+    }
+
+    ul.menu.show {
+        display: block;
     }
 
     ul.menu li {
         text-align: center;
+    }
+
+    ul.menu li a {
+        border-radius: 0;
     }
 
     footer ul.menu li {
@@ -210,6 +310,7 @@ footer {
     footer ul.menu li a {
         padding-top: 0;
         text-align: center;
+        border-radius: 0;
     }
 
     footer ul.menu li a i {
@@ -219,5 +320,31 @@ footer {
     ul.menu li, ul.menu li a {
         width: 100%;
         display: block;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 768px) {
+    .masonry {
+        column-count: 2;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .masonry {
+        column-count: 3;
+    }
+
+    header {
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .masonry {
+        column-count: 4;
+    }
+
+    header {
+        margin-top: 10px;
     }
 }

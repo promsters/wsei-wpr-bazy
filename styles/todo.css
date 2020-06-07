@@ -1,0 +1,68 @@
+.task-list {
+    width: 100%;
+}
+
+.task-list .task-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.task-list .task-header h2{
+    margin-bottom: 0;
+}
+
+.task-list .task-header .buttons {
+    align-self: flex-end;
+}
+
+.task-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.task-body .task {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #868686;
+    border-radius: 5px;
+    position: relative;
+    min-height: 41px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.task-body .task:not(:last-of-type) {
+    margin-bottom: 4px;
+}
+
+.task-body .task.state-2 {
+    border-color: orange;
+}
+
+.task-body .task.state-3 {
+    border-color: green;
+    text-decoration: line-through;
+}
+
+@media (max-width: 767.98px) {
+    .task-list .task-header .buttons {
+        width: 100%;
+    }
+
+    .task-body .task {
+        flex-direction: row;
+    }
+
+    .task-body .task .actions {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .task-body .task .actions > button {
+        margin-top: 5px;
+    }
+}
